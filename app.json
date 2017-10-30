@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/count/count",
+    "pages/search/search",
+    "pages/result/result",
+    "pages/new/new",
+    "pages/tag/tag",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#EEE",
+    "navigationBarTitleText": "记一笔",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#ffac06",
+    "borderStyle": "white",
+    "position": "bottom",
+    "backgroundColor":"white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/indexhl.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "计算器",
+        "iconPath": "images/count.png",
+        "selectedIconPath": "images/counthl.png"
+      },
+      {
+        "pagePath": "pages/count/count",
+        "text": "分析",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/searchhl.png"
+      }
+    ]
+  }
+}

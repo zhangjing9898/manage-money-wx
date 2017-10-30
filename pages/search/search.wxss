@@ -1,0 +1,92 @@
+/* pages/search/search.wxss */
+.search-body{
+  margin-top: 0rpx;
+}
+
+.input-search {
+  display:inline-block;
+  height:72rpx;
+  text-overflow:clip;
+  overflow:hidden;
+  white-space:nowrap;
+  font-family:微软雅黑;
+  min-height:1.4rem;
+  margin-top:5rpx;
+}
+.phcolor{ 
+  font-family: "微软雅黑"; 
+} 
+.label-name{
+  position:absolute;
+  left:21rpx;
+  top:20rpx;
+
+}
+.btn-search {
+  background-color: #333;
+  border-radius: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+button::after {
+border:1px solid rgba(0, 0, 0, 0);
+}
+
+.btn-search-hover {
+  background-color: #5e81bf;
+}
+
+.tag-list-view {
+  color: #333;
+  display: inline-table;
+}
+
+.tag-list-text {
+  background-color: #f8f8f8;
+  border: 2rpx solid #ddd;
+  padding: 16rpx 28rpx;
+  margin: 0 30rpx 30rpx 0;
+  border-radius: 10rpx;
+  display: inline-table;
+}
+.swiper-tab{ 
+  width: 100%; 
+  border-bottom: 2rpx solid #eeeeee; 
+  text-align: center; 
+  line-height: 80rpx;} 
+.swiper-tab-item{ font-size: 30rpx; 
+  display: inline-block; 
+  width: 33.33%; 
+  color: #666666; 
+} 
+.on{ 
+  color:#ffac06;
+  border-bottom:5rpx solid #ffac06;
+} 
+
+.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; } 
+.swiper-box .itemView{ 
+  position:relative;
+  text-align: center; 
+  border-bottom:1px dotted #eeeeee;
+} 
+.btn-new {
+  background-color:#ffac06;
+border-radius:7rpx;
+width:90%;
+height:78rpx;
+line-height:78rpx;
+font-size:28rpx;
+color:#fff;
+margin-top:37rpx;
+border:none;
+
+}
+.project-class{
+  position:absolute;
+  top:24rpx;
+  left:50%;
+  margin-left:-50rpx;
+}

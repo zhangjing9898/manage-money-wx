@@ -1,0 +1,36 @@
+/* pages/new/new.wxss */
+
+.input-new {
+  box-sizing: border-box;
+  border: 2rpx solid #ddd;
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 20rpx;
+}
+
+.area-wrp-new {
+  box-sizing: border-box;
+  border: 2rpx solid #ddd;
+  width: 100%;
+  padding: 16rpx 20rpx 80rpx 20rpx;
+}
+
+.btn-new {
+  background-color: #ffac06;
+  border-radius: 7rpx; 
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+button::after {
+border:1px solid rgba(0, 0, 0, 0);
+}
+.btn-new-hover {
+  background-color: #5e81bf;
+}
+.ph{
+  font-family: 微软雅黑;
+}

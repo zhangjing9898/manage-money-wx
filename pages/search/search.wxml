@@ -1,0 +1,70 @@
+<!--pages/search/search.wxml-->
+<view class="top-bgimage" bindlongtap="bindRefresh">
+  <view class="container">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+</view>
+<view class="main-body search-body">
+  <!-- <form bindsubmit="formSearch">
+    <view>
+      <input name="inputKey" class="input-search" placeholder="输入关键字" bindinput="bindKeyInput"  bindconfirm="bindInputSearch" confirm-type="search" value="{{key}}" />
+    </view>
+    <view class="hs20"></view>
+    <view>
+      <button class="btn-search" hover-class="btn-search-hover" form-type="submit">时光机搜索</button>
+    </view>
+  </form>
+  <view class="hs20"></view>
+  <view class="hs20"></view>
+  <view class="tag-list-view" wx:key="{{tagList}}" wx:for="{{tagList}}">
+    <text data-id="#{{item.Name}}#" class="tag-list-text" bindtap="bindTagTap">#{{item.Name}}#</text>
+  </view> -->
+  <view class="swiper-tab">
+    <view class="swiper-tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">工资</view>
+    <view class="swiper-tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">理财</view>
+  </view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 80}}px" bindchange="bindChange">
+    <swiper-item>
+      <view class="itemView">
+        <label class="label-name">税前工资(元)：</label>
+        <input class="input-search" name="salary" placeholder-class="phcolor" placeholder="请输入您的税前工资" bindinput="salaryInput" value="{{money}}" />
+      </view>
+      <view class="itemView">
+        <label class="label-name">城市：</label>
+        <input class="input-search" name="city" placeholder-class="phcolor" placeholder="请输入您的所在城市" bindinput="cityInput" value="{{city}}" />
+      </view>
+      <view class="itemView">
+        <label class="label-name">缴纳项目：</label>
+        <!-- <input class="input-search" name="project" placeholder-class="phcolor" placeholder="请输入您的缴纳项目" bindinput="projectInput"  value="{{project}}"/> -->
+        <picker class="input-search" name="pickerCity" value="{{cityArray[cityIndex].ID}}" bindchange="bindCityChange" range="{{cityArray}}" range-key="{{'Name'}}">
+          <view class="project-class">{{cityArray[cityIndex].Name}}</view>
+        </picker>
+      </view>
+      <view>
+        <button class="btn-new" hover-class="btn-new-hover" bindtap="calculateBtn">计算</button>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="itemView">
+        <label class="label-name">存款金额(元)：</label>
+        <input class="input-search" name="saveMoney" placeholder-class="phcolor" placeholder="请输入您的存款金额" bindinput="saveMoneyInput" value="{{saveMoney}}" />
+      </view>
+      <view class="itemView">
+        <label class="label-name">年利率：</label>
+        <input class="input-search" name="rate" placeholder-class="phcolor" placeholder="请输入年利率" bindinput="rateInput" value="{{rate}}" />
+      </view>
+      <view class="itemView">
+        <label class="label-name">期限（年数）：</label>
+         <input class="input-search" name="years" placeholder-class="phcolor" placeholder="请输入期限" bindinput="yearsInput"  value="{{years}}"/> 
+      </view>
+      <view>
+        <button class="btn-new" hover-class="btn-new-hover" bindtap="calculateBtn">计算</button>
+      </view>
+    </swiper-item>
+  </swiper>
+
+</view>
