@@ -212,7 +212,7 @@ Page({
           title: '税后' + result + '元',
           icon: 'success',
           mask: true,
-          duration: 1000
+          duration: 2000
         })
       } else {
         wx.showToast({
@@ -239,7 +239,7 @@ Page({
         title: '本息共'+all+'元',
         icon: 'success',
         mask: true,
-        duration: 1000
+        duration: 2000
       })
     }
   }

@@ -10,10 +10,9 @@ function CalcMoney(content) {
   return r
 }
 
-
 var app = getApp()
 Page({
-
+  
   data: {
     loadingStatus: false,
     date: '',
@@ -29,7 +28,8 @@ Page({
       { "ID": 6, "Name": "其他" },
       ],
     categoryIndex: 0,
-    m_cid: 0
+    m_cid: 0,
+    userInfo:[]
   },
 
   //日期选择
@@ -83,8 +83,6 @@ Page({
         })
       }
     }
-
-
   },
 
   //取消动作
@@ -102,7 +100,6 @@ Page({
     })
   },
 
-
   //保存
   formSave: function (e) {
     var billDate = e.detail.value.pickerDate
@@ -110,7 +107,7 @@ Page({
     var title = e.detail.value.inputTitle
     var money = e.detail.value.inputMoney
     var remark = e.detail.value.inputRemark
-
+    var userId=this.data.userInfo.nickName;
     var checkResult = true
 
     if (title == '') {
@@ -149,36 +146,56 @@ Page({
       this.setData({
         loadingStatus: true
       })
+      var that=this;
       wx.request({
-        url: requestUrl + 'wxNew.ashx',
-
-        data: {
-          ID: abID,
-          billDate: billDate,
-          categoryID: categoryID,
+        url: "http://localhost:8080/ManageMoney/MoneyServlet?method=account",
+        header: {
+          // "Content-Type": "application/x-www-form-urlencoded"
+          "Content-Type": "application/text"
+        },
+        method: "POST",  
+        data:{
+          wechatname: userId,
+          date: billDate,
+          style: categoryID,
           title: title,
-          money: money,
-          remark: remark
+          change: money,
+          detail: remark
         },
 
         success: function (res) {
-          if (res.data.ChinaValue[0].Result == 'True') {
+          // if (res.data.ChinaValue[0].Result == 'True') {
 
-            wx.setStorage({
-              key: "IsUpdate",
-              data: true
+          //   wx.setStorage({
+          //     key: "IsUpdate",
+          //     data: true
+          //   })
+
+          //   if (abID > 0) {
+          //     wx.redirectTo({
+          //       url: '../result/result?ID=' + abID
+          //     })
+          //   }
+          //   else {
+          //     wx.switchTab({
+          //       url: '../index/index'
+          //     })
+          //   }
+          // }
+          console.log(res);
+          if (res.statusCode=='200'){
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success',
+              mask: true,
+              duration: 1000
             })
-
-            if (abID > 0) {
-              wx.redirectTo({
-                url: '../result/result?ID=' + abID
-              })
-            }
-            else {
-              wx.switchTab({
-                url: '../index/index'
-              })
-            }
+            that.setData({
+              loadingStatus: false
+            })
+            // wx.redirectTo({
+            //   url: '../index/index'
+            // })
           }
           else {
             wx.showToast({
@@ -195,15 +212,23 @@ Page({
 
 
   onLoad: function (options) {
-    var that = this
+    var that = this,
     abID = typeof (options.ID) == 'undefined' ? '' : options.ID
-
+    console.log(abID);
     //初始化日期
     var newDate = new Date()
     that.setData({
       date: newDate.getFullYear() + '-' + (("0" + (newDate.getMonth() + 1)).slice(-2)) + '-' + (("0" + (newDate.getDate())).slice(-2))
     })
 
+    //调用应用实例的方法获取全局数据
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      })
+    })
+    // console.log(that.data.userInfo);
     wx.getStorage({
       key: 'billCategory',
       success: function (res) {
@@ -214,12 +239,10 @@ Page({
       fail: function (res) {
         wx.request({
           url: requestUrl + 'wxCategoryGet.ashx',
-
           success: function (res) {
             that.setData({
               categoryArray: res.data.ChinaValue
             })
-
             wx.setStorage({
               key: 'billCategory',
               data: that.data.categoryArray
@@ -230,42 +253,33 @@ Page({
     })
 
     //初始化分类
+    // if (abID > 0) {
+    //   //修改时回绑数据
+    //   wx.request({
+    //     url: requestUrl + 'wxNewGet.ashx?ID=' + abID,
 
+    //     success: function (res) {
+    //       that.setData({
+    //         date: res.data.ChinaValue[0].BillDate,
+    //         title: res.data.ChinaValue[0].Title,
+    //         money: res.data.ChinaValue[0].Money,
+    //         remark: res.data.ChinaValue[0].Remark,
+    //         m_cid: res.data.ChinaValue[0].C_Id
+    //       })
 
-    if (abID > 0) {
-      //修改时回绑数据
-      wx.request({
-        url: requestUrl + 'wxNewGet.ashx?ID=' + abID,
+    //       for (var i = 0; i < that.data.categoryArray.length; i++) {
+    //         if (that.data.categoryArray[i].ID == that.data.m_cid) {
+    //           that.setData({
+    //             categoryIndex: i
+    //           })
+    //           break;
+    //         }
+    //       }
 
-        success: function (res) {
-          that.setData({
-            date: res.data.ChinaValue[0].BillDate,
-            title: res.data.ChinaValue[0].Title,
-            money: res.data.ChinaValue[0].Money,
-            remark: res.data.ChinaValue[0].Remark,
-            m_cid: res.data.ChinaValue[0].C_Id
-          })
+    //     }
+    //   })
+    // }
 
-          for (var i = 0; i < that.data.categoryArray.length; i++) {
-            if (that.data.categoryArray[i].ID == that.data.m_cid) {
-              that.setData({
-                categoryIndex: i
-              })
-              break;
-            }
-          }
-
-        }
-      })
-    }
-
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
-    })
   },
 
   onShow: function () {

@@ -54,11 +54,11 @@
         <input class="input-search" name="saveMoney" placeholder-class="phcolor" placeholder="请输入您的存款金额" bindinput="saveMoneyInput" value="{{saveMoney}}" />
       </view>
       <view class="itemView">
-        <label class="label-name">年利率：</label>
+        <label class="label-name">年利率(%)：</label>
         <input class="input-search" name="rate" placeholder-class="phcolor" placeholder="请输入年利率" bindinput="rateInput" value="{{rate}}" />
       </view>
       <view class="itemView">
-        <label class="label-name">期限（年数）：</label>
+        <label class="label-name">期限(年数)：</label>
          <input class="input-search" name="years" placeholder-class="phcolor" placeholder="请输入期限" bindinput="yearsInput"  value="{{years}}"/> 
       </view>
       <view>
