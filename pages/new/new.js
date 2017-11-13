@@ -1,5 +1,6 @@
 // pages/new/new.js
 const requestUrl = require('../../config').requestUrl
+var util = require('../../utils/util.js')
 var abID = 0
 var userInputContent = ''
 
@@ -46,20 +47,22 @@ Page({
     })
   },
 
-  //检测描述
-  bindRemarkInput: function (e) {
-    userInputContent = e.detail.value
-    var lastChar = e.detail.value.charAt(e.detail.value.length - 1)
-    var tagCount = e.detail.value.split('#').length - 1
-
-    if (tagCount % 2 > 0 && lastChar == '#') {
-      wx.navigateTo({
-        url: '../tag/tag'
-      })
-    }
+  bindTitleInput: function (e) {
+    this.setData({
+      title: e.detail.value
+    })
+  },
+  bindMoneyInput: function (e) {
+    this.setData({
+      money: e.detail.value
+    })
   },
 
-  bindMoneyInput: function (e) {
+  
+
+
+  //检测描述
+  bindRemarkInput: function (e) {
     this.setData({
       money: e.detail.value
     })
@@ -150,18 +153,21 @@ Page({
       wx.request({
         url: "http://localhost:8080/ManageMoney/MoneyServlet?method=account",
         header: {
-          // "Content-Type": "application/x-www-form-urlencoded"
-          "Content-Type": "application/text"
+          // "content-type": "application/x-www-form-urlencoded"
+          // "content-Type": "application/text"
+          // "Content-Type": "json"
+          // 'Content-Type': 'application/json'
+          'Content-Type': "application / x - www - form - urlencoded"
         },
         method: "POST",  
-        data:{
+        data:({
           wechatname: userId,
           date: billDate,
           style: categoryID,
           title: title,
           change: money,
           detail: remark
-        },
+        }),
 
         success: function (res) {
           // if (res.data.ChinaValue[0].Result == 'True') {
