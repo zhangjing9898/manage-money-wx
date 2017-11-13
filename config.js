@@ -2,7 +2,7 @@
  * 小程序配置文件
  */
 
-var host = "b.cv18.cn"
+var host = "localhost"
 
 var config = {
 

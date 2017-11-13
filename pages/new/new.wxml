@@ -18,22 +18,22 @@
     <view class="hs20"></view>
 
     <!--分类-->
-     <picker name="pickerCategory" value="{{categoryArray[categoryIndex].ID}}" bindchange="bindCategoryChange" range="{{categoryArray}}" range-key="{{'Name'}}">
+    <picker name="pickerCategory" value="{{categoryArray[categoryIndex].Name}}" bindchange="bindCategoryChange" range="{{categoryArray}}" range-key="{{'Name'}}">
       <view class="input-new">{{categoryArray[categoryIndex].Name}}</view>
-     </picker>  
+    </picker>
     <view class="hs20"></view>
 
     <!--标题-->
-    <input name="inputTitle" class="input-new"  placeholder-class="ph" placeholder="写个标题" bindinput="bindTitleInput" value="{{title}}" />
-    <view class="hs20"></view>  
+    <input name="inputTitle" class="input-new" placeholder-class="ph" placeholder="写个标题" value="{{title}}" />
+    <view class="hs20"></view>
 
     <!--金额-->
-    <input name="inputMoney" type="digit" class="input-new" placeholder-class="ph" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{money}}" />
+    <input name="inputMoney" type="digit" class="input-new" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{money}}" />
     <view class="hs20"></view>
 
     <!--描述-->
     <view class="area-wrp-new">
-      <textarea name="inputRemark" maxlength="-1" auto-height="true" cursor-spacing="20" bindinput="bindRemarkInput" placeholder="描述一下" value="{{remark}}" />
+      <textarea name="inputRemark" maxlength="-1" auto-height="true" cursor-spacing="20" bindinput="bindRemarkInput" bindblur="bindRemarkBlur" placeholder="描述一下" value="{{remark}}" />
     </view>
     <view class="hs20"></view>
 

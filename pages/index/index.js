@@ -1,41 +1,41 @@
 //index.js
 
-const requestUrl = require('../../config').requestUrl
+// const requestUrl = require('../../config').requestUrl
 var pageIndex = 1;
 var pageSize = 20;
 
 var loadFlag = false;
 
-var getDataList = function (that) {
+// var getDataList = function (that) {
 
-  if (loadFlag == false) {
-    loadFlag = true
+//   if (loadFlag == false) {
+//     loadFlag = true
 
-    wx.request({
-      url: requestUrl + 'wxIndex.ashx',
+//     wx.request({
+//       url: requestUrl + 'wxIndex.ashx',
 
-      data: {
-        pageIndex: pageIndex,
-        pageSize: pageSize
-      },
+//       data: {
+//         pageIndex: pageIndex,
+//         pageSize: pageSize
+//       },
 
-      success: function (res) {
+//       success: function (res) {
 
-        var indexList = that.data.indexList;
-        for (var i = 0; i < res.data.ChinaValue.length; i++) {
-          indexList.push(res.data.ChinaValue[i]);
-        }
+//         var indexList = that.data.indexList;
+//         for (var i = 0; i < res.data.ChinaValue.length; i++) {
+//           indexList.push(res.data.ChinaValue[i]);
+//         }
 
-        that.setData({
-          indexList: indexList
-        });
-        pageIndex++
-        loadFlag = false
-      }
+//         that.setData({
+//           indexList: indexList
+//         });
+//         pageIndex++
+//         loadFlag = false
+//       }
 
-    })
-  }
-}
+//     })
+//   }
+// }
 
 Page({
   data: {
@@ -59,7 +59,7 @@ Page({
       indexList: []
     })
 
-    getDataList(this)
+    // getDataList(this)
   },
 
   //点击标签
@@ -115,7 +115,7 @@ Page({
                         indexList: []
                       })
 
-                      getDataList(that)
+                      // getDataList(that)
                     }
                   }
 
@@ -148,13 +148,13 @@ Page({
       }
     })
 
-    getDataList(that)
+    // getDataList(that)
   },
 
   //滑动到底部自动加载
   bindDownLoad: function () {
     var that = this
-    getDataList(that)
+    // getDataList(that)
   },
 
   onShow: function (options) {
@@ -169,7 +169,7 @@ Page({
           that.setData({
             indexList: []
           })
-          getDataList(that)
+          // getDataList(that)
         }
 
         wx.setStorage({

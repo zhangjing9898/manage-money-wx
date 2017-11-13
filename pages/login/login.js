@@ -4,7 +4,7 @@ const requestUrl = require('../../config').requestUrl
 
 var login = function (that) {
   wx.request({
-    url: requestUrl + 'wxLogin.ashx',
+    // url: requestUrl + 'wxLogin.ashx',
 
     data: {
       userName: that.data.name,

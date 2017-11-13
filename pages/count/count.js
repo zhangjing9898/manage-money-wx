@@ -4,47 +4,96 @@ var requestYear = new Date().getFullYear()
 var requestMonth = (("0" + (new Date().getMonth() + 1)).slice(-2))
 
 var getCountList = function (that) {
+  var userId = that.data.userInfo.nickName;
+  console.log(userId);
   wx.request({
-    url: requestUrl + 'wxCount.ashx',
-    data: {
-      Type: 'ALL',
-      Year: requestYear,
-      Month: requestMonth
+    url: "http://localhost:8080/ManageMoney/MoneyServlet?method=find",
+    method: "POST",
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+      // "Content-Type": "application/json"
     },
-    success: function (res) {
-      that.setData({
-        listAll: res.data.ChinaValue
-      })
-    }
-  })
+    data: {
+      "wechatname": userId
+    },
 
-  wx.request({
-    url: requestUrl + 'wxCount.ashx',
-    data: {
-      Type: 'CAT',
-      Year: requestYear,
-      Month: requestMonth
-    },
     success: function (res) {
-      that.setData({
-        listCat: res.data.ChinaValue
-      })
-    }
-  })
+      // if (res.data.ChinaValue[0].Result == 'True') {
 
-  wx.request({
-    url: requestUrl + 'wxCount.ashx',
-    data: {
-      Type: 'INC',
-      Year: requestYear,
-      Month: requestMonth
-    },
-    success: function (res) {
-      that.setData({
-        listInc: res.data.ChinaValue
-      })
+      //   wx.setStorage({
+      //     key: "IsUpdate",
+      //     data: true
+      //   })
+
+      //   if (abID > 0) {
+      //     wx.redirectTo({
+      //       url: '../result/result?ID=' + abID
+      //     })
+      //   }
+      //   else {
+      //     wx.switchTab({
+      //       url: '../index/index'
+      //     })
+      //   }
+      // }
+      console.log(res.data);
+      if (res.statusCode == '200') {
+        that.setData({
+          listAll: res.data
+        })
+      }
+      else {
+        wx.showToast({
+          title: '保存失败',
+          image: "../../images/icon-no.png",
+          mask: true,
+          duration: 1000
+        })
+      }
     }
   })
+  // wx.request({
+  //   url: "http://localhost:8080/ManageMoney/MoneyServlet?method=find",
+  //   method: "POST",
+  //   data: {
+  //     Type: 'ALL',
+  //     Year: requestYear,
+  //     Month: requestMonth
+  //   },
+  //   success: function (res) {
+  //     that.setData({
+  //       listAll: res.data.ChinaValue
+  //     })
+  //   }
+  // })
+
+  // wx.request({
+  //   url: requestUrl + 'wxCount.ashx',
+  //   data: {
+  //     Type: 'CAT',
+  //     Year: requestYear,
+  //     Month: requestMonth
+  //   },
+  //   success: function (res) {
+  //     that.setData({
+  //       listCat: res.data.ChinaValue
+  //     })
+  //   }
+  // })
+
+  // wx.request({
+  //   url: requestUrl + 'wxCount.ashx',
+  //   data: {
+  //     Type: 'INC',
+  //     Year: requestYear,
+  //     Month: requestMonth
+  //   },
+  //   success: function (res) {
+  //     that.setData({
+  //       listInc: res.data.ChinaValue
+  //     })
+  //   }
+  // })
 }
 
 Page({

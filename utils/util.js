@@ -22,8 +22,10 @@ function json2Form(json) {
     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));
   }
   return str.join("&");
-}
+}  
+
+
 module.exports = {
-  formatTime: formatTime,
-  json2Form: json2Form,
+  json2Form: json2Form, 
+  formatTime: formatTime
 }
