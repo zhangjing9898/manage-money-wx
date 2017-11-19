@@ -1,0 +1,27 @@
+/* pages/finance/finance.wxss */
+.productAll{
+  display: block;
+}
+.textFinance{
+  font-family: 微软雅黑;
+  font-size: 43rpx;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.productInfoArea{
+  display: inline-block;
+}
+.productImg{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  float: left;
+}
+.productInfo{
+    color:#666;
+    font-size:28rpx;
+    margin-bottom:20rpx;
+    margin-left: 20rpx;
+    letter-spacing:2rpx;
+    line-height: 40rpx;
+}

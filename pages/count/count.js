@@ -3,11 +3,11 @@ const requestUrl = require('../../config').requestUrl
 var requestYear = new Date().getFullYear()
 var requestMonth = (("0" + (new Date().getMonth() + 1)).slice(-2))
 
-var getCountList = function (that) {
+var getCountList = function (that,Requrl) {
   var userId = that.data.userInfo.nickName;
-  console.log(userId);
+  console.log(Requrl);
   wx.request({
-    url: "http://localhost:8080/ManageMoney/MoneyServlet?method=find",
+    url: Requrl,
     method: "POST",
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -117,9 +117,8 @@ Page({
       })
     })
 
-    getCountList(that)
+    getCountList(that, "http://localhost:8080/ManageMoney/MoneyServlet?method=find")
   },
-
   //分类查看
   bindOptionTap: function (e) {
     var that = this
@@ -129,21 +128,22 @@ Page({
 
     switch (e.target.id) {
       case '1':
-        requestYear = '0'
-        requestMonth = '00'
-        getCountList(that)
+        console.log("全部");
+        getCountList(that,"http://localhost:8080/ManageMoney/MoneyServlet?method=weekend")
         break;
 
       case '2':
-        requestYear = '2017'
-        requestMonth = '00'
-        getCountList(that)
+        // requestYear = '2017'
+        // requestMonth = '00'
+        console.log("周消费")
+        getCountList(that,"http://localhost:8080/ManageMoney/MoneyServlet?method=weekend")
         break;
 
       case '3':
-        requestYear = new Date().getFullYear()
-        requestMonth = (("0" + (new Date().getMonth() + 1)).slice(-2))
-        getCountList(that)
+        // requestYear = new Date().getFullYear()
+        // requestMonth = (("0" + (new Date().getMonth() + 1)).slice(-2))
+        console.log("当日明细");
+        getCountList(that,"http://localhost:8080/ManageMoney/MoneyServlet?method=today")
         break;
     }
   },
@@ -157,7 +157,7 @@ Page({
       case 1:
         requestYear = param[0]
         requestMonth = '00'
-        getCountList(that)
+        // getCountList(that)
 
         that.setData({
           optionColorId: 2
@@ -167,7 +167,7 @@ Page({
       case 2:
         requestYear = param[0]
         requestMonth = param[1]
-        getCountList(that)
+        // getCountList(that)
 
         that.setData({
           optionColorId: 3
@@ -176,7 +176,7 @@ Page({
 
       case 3:
         wx.navigateTo({
-          url: '../result/result?DateTime=' + e.currentTarget.dataset.id
+          
         })
         break;
     }
@@ -184,7 +184,7 @@ Page({
 
   bindCat: function (e) {
     wx.navigateTo({
-      url: '../result/result?Year=' + requestYear + '&Month=' + requestMonth + '&CID=' + e.currentTarget.dataset.id
+     
     })
   }
 })

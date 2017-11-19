@@ -5,6 +5,7 @@
     "pages/search/search",
     "pages/result/result",
     "pages/new/new",
+    "pages/finance/finance",
     "pages/tag/tag",
     "pages/logs/logs"
   ],

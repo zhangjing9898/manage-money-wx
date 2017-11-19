@@ -51,6 +51,12 @@ Page({
     })
   },
 
+  //理财产品推荐
+  bindNewTapTwo: function () {
+    wx.navigateTo({
+      url: '../finance/finance'
+    })
+  },
   //长按封面图 重新加载
   bindRefresh: function () {
     pageIndex = 1

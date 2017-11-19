@@ -1,0 +1,22 @@
+<!--pages/finance/finance.wxml-->
+<view class="top-bgimage">
+  <view class="container">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+</view>
+<view class="main-body">
+  <view class="productAll">
+    <view class="textFinance">理财推荐:</view>
+    <view class="productInfoArea">
+      <image class="productImg" src="http://localhost:8080/ManageMoney/image/yirendai.jpg"></image>
+      <view class="productInfo">
+        <view class="productName">产品名称:yirendai</view>
+        <view class="companyName">公司名称:宜人贷</view>
+        <view class="productDes">产品简介:宜人贷（NYSE: YRD）是中国在线金融服务平台，由宜信公司2012年推出。宜人贷通过互联网、大数据等科技手段，为中国城市白领人群提供信用借款咨询服务</view>
+      </view>
+    </view>
+  </view>
+</view>
