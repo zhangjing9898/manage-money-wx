@@ -29,6 +29,11 @@ Page({
       { "ID": 6, "Name": "其他" },
       ],
     categoryIndex: 0,
+    TypeArray: [
+      { "ID": 1, "Name": "支出" },
+      { "ID": 2, "Name": "收入" }
+    ],
+    TypeIndex: 0,
     m_cid: 0,
     userInfo:[]
   },
@@ -44,6 +49,13 @@ Page({
   bindCategoryChange: function (e) {
     this.setData({
       categoryIndex: e.detail.value
+    })
+  },
+
+  //类型选择
+  bindTypeChange: function (e) {
+    this.setData({
+      TypeIndex: e.detail.value
     })
   },
 
@@ -105,6 +117,7 @@ Page({
   formSave: function (e) {
     var billDate = e.detail.value.pickerDate
     var categoryID = e.detail.value.pickerCategory
+    var typeName = e.detail.value.pickerType
     var title = e.detail.value.inputTitle
     var money = e.detail.value.inputMoney
     var remark = e.detail.value.inputRemark
@@ -150,7 +163,7 @@ Page({
       var that=this;
       
       wx.request({
-        url: "http://localhost:8080/ManageMoney/MoneyServlet?method=account",
+        url: "http://127.0.0.1:3000/new",
         method: "POST",  
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -160,6 +173,7 @@ Page({
           "wechatname": userId,
           "date": billDate,
           "style": categoryID,
+          "type":typeName,
           "title": title,
           "changed": money,
           "detail": remark

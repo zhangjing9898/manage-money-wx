@@ -18,45 +18,42 @@
     </view>
 
     <!--按时间分类-->
-     <view class="hs20"></view>
-    <view>
-        <view class="list-title-left">消费时间</view>
-        <view class="list-title-right">消费总金额</view>
+    <view class="hs20"></view>
+    <view class="{{optionColorId == 3 ? 'option-highlight-display' : 'option-default-display'}}">
+        <view class="list-title-left">消费类型</view>
+        <view class="list-title-right">消费金额</view>
         <view class="clear"></view>
     </view>
 
-    <view wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
-        <view class="list-content-left">{{item.date}}</view>
+    <view class="{{optionColorId == 3 ? 'option-highlight-display' : 'option-default-display'}}" wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
+        <view class="list-content-left">{{item.style}}</view>
         <view class="list-content-right">{{item.changed}}</view>
         <view class="clear"></view>
     </view> 
 
     <!--按支出分类-->
-    <view class="hs20"></view>
-    <view>
+    <view class="{{optionColorId == 2 ? 'option-highlight-display' : 'option-default-display'}}">
         <view class="list-title-left">支出分类</view>
         <view class="list-title-right">支出金额</view>
         <view class="clear"></view>
     </view>
 
-    <view wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
+    <view class="{{optionColorId == 2 ? 'option-highlight-display' : 'option-default-display'}}" wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
         <view class="list-content-left">{{item.style}}</view>
         <view class="list-content-right">{{item.changed}}</view>
         <view class="clear"></view>
     </view>
 
     <!--按收入分类-->
-    <view class="hs20"></view>
-    <view>
-        <view class="list-title-left">支出标题</view>
-        <view class="list-title-right">支出细节</view>
+     <view class="{{optionColorId == 1 ? 'option-highlight-display' : 'option-default-display'}}">
+        <view class="list-title-left">日期</view>
+        <view class="list-title-right">支出金额</view>
         <view class="clear"></view>
     </view>
 
-    <view wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
-        <view class="list-content-left">{{item.title}}</view>
-        <view class="list-content-right">{{item.detail}}</view>
+    <view class="{{optionColorId == 1 ? 'option-highlight-display' : 'option-default-display'}}" wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
+        <view class="list-content-left">{{item.date}}</view>
+        <view class="list-content-right">{{item.changed}}</view>
         <view class="clear"></view>
     </view>
-    <view class="hs20"></view>
 </view>

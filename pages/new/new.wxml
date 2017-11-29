@@ -22,6 +22,12 @@
       <view class="input-new">{{categoryArray[categoryIndex].Name}}</view>
     </picker>
     <view class="hs20"></view>
+    
+    <!--形式-->
+    <picker name="pickerType" value="{{TypeArray[TypeIndex].Name}}" bindchange="bindTypeChange" range="{{TypeArray}}" range-key="{{'Name'}}">
+      <view class="input-new">{{TypeArray[TypeIndex].Name}}</view>
+    </picker>
+    <view class="hs20"></view>
 
     <!--标题-->
     <input name="inputTitle" class="input-new" placeholder-class="ph" placeholder="写个标题" value="{{title}}" />

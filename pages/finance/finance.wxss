@@ -1,4 +1,10 @@
 /* pages/finance/finance.wxss */
+body{
+  background-color: gray;
+}
+.main-body{
+  margin-top: 3px;
+}
 .productAll{
   display: block;
 }
@@ -7,21 +13,55 @@
   font-size: 43rpx;
   font-weight: 600;
   margin-bottom: 10px;
+  /* color:#ffac06 */
 }
 .productInfoArea{
   display: inline-block;
+  padding-bottom:15px;
+  border-bottom:1px solid #ededed;
+  margin-top:12px;
+}
+.billCls{
+  width: 70rpx;
+  height: 70rpx;
+}
+.productTitle{
+  display:inline-block;
+  position:absolute;
+  margin-top:5px;
+  font-size:20px;
+  margin-left:5px;
 }
 .productImg{
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 50%;
-  float: left;
+  /* height: 200rpx;
+  border-radius: 50%; */
+  /* float: left; */
+  width:100%;
+  border:1px solid #ededed;
+  padding:5px;
 }
 .productInfo{
     color:#666;
     font-size:28rpx;
+    margin-top: 20rpx;
     margin-bottom:20rpx;
     margin-left: 20rpx;
     letter-spacing:2rpx;
     line-height: 40rpx;
+}
+.btn-new {
+  background-color: #ffac06;
+  border-radius: 7rpx; 
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+button::after {
+border:1px solid rgba(0, 0, 0, 0);
+}
+
+.btn-new-hover {
+  background-color: #5e81bf;
 }

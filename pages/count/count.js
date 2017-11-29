@@ -52,48 +52,6 @@ var getCountList = function (that,Requrl) {
       }
     }
   })
-  // wx.request({
-  //   url: "http://localhost:8080/ManageMoney/MoneyServlet?method=find",
-  //   method: "POST",
-  //   data: {
-  //     Type: 'ALL',
-  //     Year: requestYear,
-  //     Month: requestMonth
-  //   },
-  //   success: function (res) {
-  //     that.setData({
-  //       listAll: res.data.ChinaValue
-  //     })
-  //   }
-  // })
-
-  // wx.request({
-  //   url: requestUrl + 'wxCount.ashx',
-  //   data: {
-  //     Type: 'CAT',
-  //     Year: requestYear,
-  //     Month: requestMonth
-  //   },
-  //   success: function (res) {
-  //     that.setData({
-  //       listCat: res.data.ChinaValue
-  //     })
-  //   }
-  // })
-
-  // wx.request({
-  //   url: requestUrl + 'wxCount.ashx',
-  //   data: {
-  //     Type: 'INC',
-  //     Year: requestYear,
-  //     Month: requestMonth
-  //   },
-  //   success: function (res) {
-  //     that.setData({
-  //       listInc: res.data.ChinaValue
-  //     })
-  //   }
-  // })
 }
 
 Page({
@@ -117,7 +75,7 @@ Page({
       })
     })
 
-    getCountList(that, "http://localhost:8080/ManageMoney/MoneyServlet?method=find")
+    getCountList(that, "http://127.0.0.1:3000/today")
   },
   //分类查看
   bindOptionTap: function (e) {
@@ -129,21 +87,21 @@ Page({
     switch (e.target.id) {
       case '1':
         console.log("全部");
-        getCountList(that,"http://localhost:8080/ManageMoney/MoneyServlet?method=weekend")
+        getCountList(that,"http://127.0.0.1:3000/all")
         break;
 
       case '2':
         // requestYear = '2017'
         // requestMonth = '00'
         console.log("周消费")
-        getCountList(that,"http://localhost:8080/ManageMoney/MoneyServlet?method=weekend")
+        getCountList(that,"http://127.0.0.1:3000/week")
         break;
 
       case '3':
         // requestYear = new Date().getFullYear()
         // requestMonth = (("0" + (new Date().getMonth() + 1)).slice(-2))
         console.log("当日明细");
-        getCountList(that,"http://localhost:8080/ManageMoney/MoneyServlet?method=today")
+        getCountList(that,"http://127.0.0.1:3000/today");
         break;
     }
   },

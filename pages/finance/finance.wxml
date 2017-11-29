@@ -9,13 +9,19 @@
 </view>
 <view class="main-body">
   <view class="productAll">
-    <view class="textFinance">理财推荐:</view>
-    <view class="productInfoArea">
-      <image class="productImg" src="http://localhost:8080/ManageMoney/image/yirendai.jpg"></image>
+    <view class="productInfoArea" wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
+      <view class="companyName">
+        <image class="billCls" src="../../images/bill.png"></image>
+        <view class="productTitle">{{item.company}}</view>
+      </view>
+      <image class="productImg" src="{{item.imageUrl}}"></image>
       <view class="productInfo">
-        <view class="productName">产品名称:yirendai</view>
-        <view class="companyName">公司名称:宜人贷</view>
-        <view class="productDes">产品简介:宜人贷（NYSE: YRD）是中国在线金融服务平台，由宜信公司2012年推出。宜人贷通过互联网、大数据等科技手段，为中国城市白领人群提供信用借款咨询服务</view>
+        <!-- <view class="productName">产品名称:{{item.name}}</view> -->
+        <view class="companyName">公司名称:{{item.company}}</view>
+        <view class="productDes">产品简介:{{item.description}}</view>
+      </view>
+      <view>
+        <button class="btn-new" hover-class="btn-new-hover" bindtap="bindToBuy">进入投资</button>
       </view>
     </view>
   </view>

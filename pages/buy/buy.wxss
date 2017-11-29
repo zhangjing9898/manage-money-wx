@@ -1,0 +1,64 @@
+/* pages/buy/buy.wxss */
+
+.search-body {
+  margin-top: 0rpx;
+}
+
+.input-search {
+  display: inline-block;
+  height: 72rpx;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 微软雅黑;
+  min-height: 1.4rem;
+  margin-top: 5rpx;
+}
+
+.phcolor {
+  font-family: "微软雅黑";
+}
+
+.label-name {
+  position: absolute;
+  left: 21rpx;
+  top: 20rpx;
+}
+
+button::after {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.btn-search-hover {
+  background-color: #5e81bf;
+}
+
+.itemView {
+  position: relative;
+  text-align: center;
+  border-bottom: 1px dotted #eee;
+}
+
+.btn-new {
+  background-color: #ffac06;
+  border-radius: 7rpx;
+  width: 100%;
+  height: 78rpx;
+  line-height: 78rpx;
+  font-size: 28rpx;
+  color: #fff;
+  margin-top: 37rpx;
+  border: none;
+}
+
+.noticeBox {
+  margin-top: 10px;
+  font-size: 14px;
+  color: grey;
+  padding-left: 9px;
+}
+.promiseArea{
+  margin-top:37px;
+  padding:10px;
+  color:gray;
+}

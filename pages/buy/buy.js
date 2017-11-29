@@ -1,42 +1,10 @@
-// pages/finance/finance.js
-var getCountList = function (that, Requrl) {
-  var userId = that.data.userInfo.nickName;
-  console.log(Requrl);
-  wx.request({
-    url: Requrl,
-    method: "POST",
-    header: {
-      "Content-Type": "application/x-www-form-urlencoded"
-      // "Content-Type": "application/json"
-    },
-    data: {
-      "wechatname": userId
-    },
-
-    success: function (res) {
-      console.log(res.data);
-      if (res.statusCode == '200') {
-        that.setData({
-          listAll: res.data
-        })
-      }
-      else {
-        wx.showToast({
-          title: '保存失败',
-          image: "../../images/icon-no.png",
-          mask: true,
-          duration: 1000
-        })
-      }
-    }
-  })
-}
+// pages/buy/buy.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    listAll: [],
     userInfo: []
   },
 
@@ -46,7 +14,6 @@ Page({
   onLoad: function (options) {
     //调用应用实例的方法获取全局数据
     var that = this
-
     //调用应用实例的方法获取全局数据
     var app = getApp()
     app.getUserInfo(function (userInfo) {
@@ -54,14 +21,6 @@ Page({
       that.setData({
         userInfo: userInfo
       })
-    })
-    getCountList(that, "http://127.0.0.1:3000/products");
-  },
-
-  //进入购买
-  bindToBuy:function(){
-    wx.navigateTo({
-      url: '../buy/buy'
     })
   },
 

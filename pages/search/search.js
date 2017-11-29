@@ -208,11 +208,20 @@ Page({
       }
       var result = Salary - output;
       if (output > 0) {
-        wx.showToast({
-          title: '税后' + result + '元',
-          icon: 'success',
-          mask: true,
-          duration: 2000
+        // wx.showToast({
+        //   title: '税后' + result + '元',
+        //   icon: 'success',
+        //   mask: true,
+        //   duration: 2000
+        // })
+        wx.showModal({
+          title: '结余',
+          content: '税后是' + result + '元',
+          success: function (res) {
+            if (res.confirm) {
+              // console.log('用户点击确定')
+            }
+          }
         })
       } else {
         wx.showToast({
@@ -235,12 +244,22 @@ Page({
         interest += saveMoney * (rate / 100.0);
       }
       var all=(saveMoney+interest).toFixed(2);
-      wx.showToast({
-        title: '本息共'+all+'元',
-        icon: 'success',
-        mask: true,
-        duration: 2000
+      // wx.showToast({
+      //   title: '本息共'+all+'元',
+      //   icon: 'success',
+      //   mask: true,
+      //   duration: 2000
+      // })
+      wx.showModal({
+        title: '结余',
+        content: '本息一共'+all+'元',
+        success: function (res) {
+          if (res.confirm) {
+            // console.log('用户点击确定')
+          }
+        }
       })
+
     }
   }
 })

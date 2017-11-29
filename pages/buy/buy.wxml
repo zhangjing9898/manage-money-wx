@@ -1,0 +1,24 @@
+<!--pages/buy/buy.wxml-->
+<view class="top-bgimage" bindlongtap="bindRefresh">
+  <view class="container">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+</view>
+<view class="main-body search-body">
+  <view class="itemView">
+    <label class="label-name">投资金额(元)：</label>
+    <input class="input-search" name="salary" placeholder-class="phcolor" placeholder="请输入您的投资金额" bindinput="salaryInput" value="{{money}}" />
+  </view>
+  <view class="noticeBox">
+    <label>温馨提示:每人限投20万</label>
+  </view>
+  <view class="promiseArea">
+    <checkbox class="checkboxStyle" value="{{item.name}}" checked="{{item.checked}}"/>本人已阅读并同意《出借咨询及管理服务协议》及相关融资文件范本《产品说明书》《合格出借者风险揭示书》《认购热议》,并已完全理解和接受上述文件的全部内容。本人的出借决策完全基于本人的独立自主判断做出，并且自愿承担出借该项目所产生的相关风险和全部后果。
+  </view>
+  <view>
+    <button class="btn-new" hover-class="btn-new-hover" bindtap="calculateBtn">购买</button>
+  </view>
+</view>

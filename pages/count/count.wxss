@@ -59,3 +59,9 @@
 .option-color-highlight {
   color: #ff5722;
 }
+.option-highlight-display {
+  display: block;
+}
+.option-default-display {
+  display: none;
+}
