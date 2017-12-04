@@ -55,11 +55,20 @@ Page({
         userInfo: userInfo
       })
     })
+    //得到相应rate
+
+
     getCountList(that, "http://127.0.0.1:3000/products");
   },
 
   //进入购买
-  bindToBuy:function(){
+  bindToBuy:function(e){
+    // console.log(e);
+    var id=e.target.dataset.id;
+    // console.log(e);
+    // console.log(id);
+    var app=getApp();
+    app.productRate=id;
     wx.navigateTo({
       url: '../buy/buy'
     })

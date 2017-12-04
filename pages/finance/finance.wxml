@@ -18,10 +18,11 @@
       <view class="productInfo">
         <!-- <view class="productName">产品名称:{{item.name}}</view> -->
         <view class="companyName">公司名称:{{item.company}}</view>
+        <view class="classname"  >借贷利率:{{item.rate}}</view>
         <view class="productDes">产品简介:{{item.description}}</view>
       </view>
       <view>
-        <button class="btn-new" hover-class="btn-new-hover" bindtap="bindToBuy">进入投资</button>
+        <button class="btn-new" hover-class="btn-new-hover" data-id="{{item.rate}}" bindtap="bindToBuy">进入投资</button>
       </view>
     </view>
   </view>

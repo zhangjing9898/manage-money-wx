@@ -1,13 +1,12 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/finance/finance",
+    "pages/buy/buy",
     "pages/count/count",
     "pages/search/search",
     "pages/result/result",
     "pages/new/new",
-    "pages/finance/finance",
-    "pages/buy/buy",
     "pages/tag/tag",
     "pages/logs/logs"
   ],

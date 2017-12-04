@@ -26,7 +26,7 @@
     </view>
 
     <view class="{{optionColorId == 3 ? 'option-highlight-display' : 'option-default-display'}}" wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
-        <view class="list-content-left">{{item.style}}</view>
+        <view class="list-content-left">{{item.title}}</view>
         <view class="list-content-right">{{item.changed}}</view>
         <view class="clear"></view>
     </view> 

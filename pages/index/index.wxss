@@ -49,3 +49,17 @@ border:1px solid rgba(0, 0, 0, 0);
 .list-image {
   width: 50%;
 }
+.balanceArea{
+  color:white;
+padding-bottom:10px;
+position: relative;
+font-size: 16px;
+padding-left: 20px;
+}
+.billIcon{
+width:20px;
+height:20px;
+position:absolute;
+left:-7px;
+bottom:10px;
+}
