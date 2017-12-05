@@ -1,0 +1,6 @@
+.area-wrp-new {
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  padding: 24rpx;
+}

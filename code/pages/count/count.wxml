@@ -1,0 +1,61 @@
+<!--pages/count/count.wxml-->
+<view class="top-bgimage">
+  <view class="container">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="main-body">
+    <view class="option" bindtap="bindOptionTap" >
+        <text bingtap="bindOptionTapAll" id="1" class="{{optionColorId == 1 ? 'option-color-highlight' : 'option-color'}}">全部</text>
+        <text class="blank-char"> | </text>
+        <text bingtap="bindOptionTapWeek" id="2" class="{{optionColorId == 2 ? 'option-color-highlight' : 'option-color'}}">最近三天</text>
+        <text class="blank-char"> | </text>
+        <text bingtap="bindOptionTapToday" id="3" class="{{optionColorId == 3 ? 'option-color-highlight' : 'option-color'}}">当日明细</text>
+    </view>
+
+    <!--按时间分类-->
+    <view class="hs20"></view>
+    <view class="{{optionColorId == 3 ? 'option-highlight-display' : 'option-default-display'}}">
+        <view class="list-title-left-one">消费类型</view>
+        <view class="list-title-left">消费金额</view>
+        <view class="list-title-right">操作</view>
+        <view class="clear"></view>
+    </view>
+
+    <view class="{{optionColorId == 3 ? 'option-highlight-display' : 'option-default-display'}}" wx:key="{{listAll}}" wx:for="{{listAll}}" >
+        <view class="list-content-left-one">{{item.title}}</view>
+        <view class="list-content-left">{{item.changed}}</view>
+        <view class="list-content-right"  bindtap="bindDetail" data-id="{{item._id}}" >查看</view>
+        <view class="clear"></view>
+    </view> 
+
+    <!--按支出分类-->
+    <view class="{{optionColorId == 2 ? 'option-highlight-display' : 'option-default-display'}}">
+        <view class="list-title-table">日期</view>
+        <view class="list-title-table-right">支出金额</view>
+        <view class="clear"></view>
+    </view>
+
+    <view class="{{optionColorId == 2 ? 'option-highlight-display' : 'option-default-display'}}" wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
+        <view class="list-content-table">{{item.date}}</view>
+        <view class="list-content-table-right">{{item.changed}}</view>
+        <view class="clear"></view>
+    </view>
+
+    <!--按收入分类-->
+     <view class="{{optionColorId == 1 ? 'option-highlight-display' : 'option-default-display'}}">
+        <view class="list-title-table">日期</view>
+        <view class="list-title-table-right">支出金额</view>
+        <view class="clear"></view>
+    </view>
+
+    <view class="{{optionColorId == 1 ? 'option-highlight-display' : 'option-default-display'}}" wx:key="{{listAll}}" wx:for="{{listAll}}" bindtap="bindAll" data-id="{{item.DateTime}}">
+        <view class="list-content-table">{{item.date}}</view>
+        <view class="list-content-table-right">{{item.changed}}</view>
+        <view class="clear"></view>
+    </view>
+</view>

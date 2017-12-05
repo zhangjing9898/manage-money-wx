@@ -1,0 +1,33 @@
+<view class="top-bgimage">
+  <view class="container">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+</view>
+<view class="main-body">
+  <form bindsubmit="formSave">
+    <!--日期-->
+   <view class="area-wrp-new">
+    日期：{{listDetail.date}}
+    </view>
+    <!--分类-->
+    <view class="area-wrp-new">
+    类别：{{listDetail.style}}
+    </view>
+    <!--形式-->
+    <view class="area-wrp-new">
+    形式：{{listDetail.style}}
+    </view>
+    <view class="area-wrp-new">
+    标题：{{listDetail.title}}
+    </view>
+    <view class="area-wrp-new">
+    金额：{{listDetail.changed}}
+    </view>
+    <view class="area-wrp-new">
+    细节：{{listDetail.detail}}
+    </view>
+  </form>
+</view>
