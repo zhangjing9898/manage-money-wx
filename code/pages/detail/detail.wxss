@@ -3,4 +3,37 @@
   border-bottom: 1px solid #ddd;
   width: 100%;
   padding: 24rpx;
+  position: relative;
+}
+input{
+  position: absolute;
+  display:inline-block;
+  top:8px;
+}
+
+.btn-new-save {
+  background-color: #ffac06;
+  border-radius: 7rpx; 
+  width: 49%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+  float: left;
+}
+.btn-new-delete {
+  background-color:#ff5722;
+  border-radius: 7rpx; 
+  width: 49%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+  float: right;
+}
+button::after {
+border:1px solid rgba(0, 0, 0, 0);
+}
+.btn-new-hover {
+  background-color: #5e81bf;
 }

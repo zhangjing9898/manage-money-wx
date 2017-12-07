@@ -26,6 +26,7 @@ exports.new = function (req, res, next) {
         res.send("1");
         //得到表单之后做的事情
         var username = fields.wechatname;
+        var detailId=fields.detailId;
         var date = fields.date==null?todayDate:fields.date;
         var style=fields.style==null?"":fields.style;
         var type=fields.type==null?"投资理财":fields.type;
@@ -50,16 +51,31 @@ exports.new = function (req, res, next) {
         if(preDate==date){
             resultMoney=resultMoney+changed;
         }
-        console.log(resultMoney);
-            //插入消费数据
+        // console.log(resultMoney);
+        //_id是否存在
+        db.find("money", { "_id" : ObjectId(detailId)}, function (err, result) {
+
+            if (result.length != 0) {
+                //有，就更改
+                db.updateMany("money", { "_id" : ObjectId(detailId)}, {$set: { "date": date,
+                    "style": style,
+                    "type": type,
+                    "title": title,
+                    "changed": changed,
+                    "detail": detail}}, function (err, result) {
+                    // res.send("1");
+                })
+                return;
+            }
+
             db.insertOne("money", {
                 "username": username,
                 "date": date,
                 "style": style,
-                "type":type,
-                "title":title,
-                "changed":changed,
-                "detail":detail
+                "type": type,
+                "title": title,
+                "changed": changed,
+                "detail": detail
             }, function (err, result) {
                 if (err) {
                     res.send("-3"); //服务器错误
@@ -73,24 +89,26 @@ exports.new = function (req, res, next) {
                     }
                     if (result.length != 0) {
                         //有，就更改
-                        db.updateMany("allToday",{"date":date},{$set:{"changed":resultMoney}},function (err,result) {
+                        db.updateMany("allToday", {"date": date}, {$set: {"changed": resultMoney}}, function (err, result) {
                             // res.send("1");
                         })
                         return;
                     }
                     //没有就插入
-                    db.insertOne("allToday",{
-                        "username":username,
-                        "date":date,
-                        "changed":resultMoney
-                    },function (err, result) { if(err){
-                        // res.send("-3");
-                        return;
-                    } })
+                    db.insertOne("allToday", {
+                        "username": username,
+                        "date": date,
+                        "changed": resultMoney
+                    }, function (err, result) {
+                        if (err) {
+                            // res.send("-3");
+                            return;
+                        }
+                    })
                 })
             })
-
-        });
+        })
+    });
 };
 
 //获取当日清单
@@ -119,9 +137,7 @@ exports.week=function (req,res,next) {
             res.json(result);
         });
     });
-}
-
-
+};
 
 //获取全部消费
 exports.all=function (req,res,next) {
@@ -212,4 +228,17 @@ exports.detail=function (req,res,next) {
             res.json(result);
         })
     });
-}
+};
+
+//删除单笔消费
+exports.delete=function (req,res,next) {
+    //得到用户填写的东西
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var detailId=fields.detailId;
+        db.deleteMany("money",{ "_id" : ObjectId(detailId)},function (err, result) {
+            // console.log(result);
+            res.send("1");
+        })
+    });
+};

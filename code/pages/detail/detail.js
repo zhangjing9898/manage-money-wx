@@ -41,7 +41,6 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.statusCode == '200') {
-
           that.setData({
             listDetail: res.data[0]
           })
@@ -97,6 +96,140 @@ Page({
     })
 
 
+  },
+  //保存
+  formSave: function (e) {
+    var billDate = e.detail.value.inputDate
+    var categoryID = e.detail.value.inputStyle
+    var typeName = e.detail.value.inputType
+    var title = e.detail.value.inputTitle
+    var money = e.detail.value.inputMoney
+    var remark = e.detail.value.inputDetail
+    var userId = this.data.userInfo.nickName;
+    var detailId = this.data.listDetail._id;
+    console.log(detailId);
+    var checkResult = true
+    console.log(categoryID)
+    if (title == '') {
+      checkResult = false
+      wx.showToast({
+        title: '写个标题',
+        image: "../../images/icon-no.png",
+        mask: true,
+        duration: 1000
+      })
+    }
+    else {
+      if (money == '') {
+        checkResult = false
+        wx.showToast({
+          title: '输入金额',
+          image: "../../images/icon-no.png",
+          mask: true,
+          duration: 1000
+        })
+      }
+      else {
+        if (remark == '') {
+          checkResult = false
+          wx.showToast({
+            title: '描述一下',
+            image: "../../images/icon-no.png",
+            mask: true,
+            duration: 1000
+          })
+        }
+      }
+    }
+
+    if (checkResult) {
+      this.setData({
+        loadingStatus: true
+      })
+      var that = this;
+
+      wx.request({
+        url: "http://127.0.0.1:3000/new",
+        method: "POST",
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+          // "Content-Type": "application/json"
+        },
+        data: {
+          "wechatname": userId,
+          "detailId":detailId,
+          "date": billDate,
+          "style": categoryID,
+          "type": typeName,
+          "title": title,
+          "changed": money,
+          "detail": remark
+        },
+
+        success: function (res) {
+          console.log(res);
+          if (res.statusCode == '200') {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success',
+              mask: true,
+              duration: 1000
+            })
+            that.setData({
+              loadingStatus: false
+            })
+            // wx.redirectTo({
+            //   url: '../index/index'
+            // })
+          }
+          else {
+            wx.showToast({
+              title: '保存失败',
+              image: "../../images/icon-no.png",
+              mask: true,
+              duration: 1000
+            })
+          }
+        }
+      })
+    }
+  },
+  //删除操作
+  delete:function(e){
+    var userId = this.data.userInfo.nickName;
+    var detailId = this.data.listDetail._id;
+    wx.request({
+      url: "http://127.0.0.1:3000/delete",
+      method: "POST",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+        // "Content-Type": "application/json"
+      },
+      data: {
+        "wechatname": userId,
+        "detailId": detailId
+      },
+
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == '200') {
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            mask: true,
+            duration: 1000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '删除失败',
+            image: "../../images/icon-no.png",
+            mask: true,
+            duration: 1000
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

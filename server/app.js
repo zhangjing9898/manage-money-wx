@@ -24,4 +24,5 @@ app.post("/all",router.all);                //全部消费明细
 app.post("/products",router.products);      //理财产品推荐
 app.post("/balance",router.balance);        //余额计算
 app.post("/detail",router.detail);          //单笔消费详情
+app.post("/delete",router.delete);          //删除单笔消费
 app.listen(3000);

@@ -1,3 +1,34 @@
+//查询详情
+var searchBalance=function(that){
+  var userId = that.data.userInfo.nickName;
+  wx.request({
+    url: "http://127.0.0.1:3000/balance",
+    method: "POST",
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data: {
+      "wechatname": userId
+    },
+
+    success: function (res) {
+      console.log(res.data);
+      if (res.statusCode == '200') {
+        that.setData({
+          balance: res.data.balance
+        })
+      }
+      else {
+        wx.showToast({
+          title: '查询失败',
+          image: "../../images/icon-no.png",
+          mask: true,
+          duration: 1000
+        })
+      }
+    }
+  })
+}
 
 Page({
   data: {
@@ -29,71 +60,14 @@ Page({
       that.setData({
         userInfo: userInfo
       })
+      searchBalance(that);
     })
-    // })
-    console.log(that.data);
-    //获取账户余额
-    var userId = "张靖9898";
-    // console.log(Requrl);
-    wx.request({
-      url: "http://127.0.0.1:3000/balance",
-      method: "POST",
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        "wechatname": userId
-      },
-
-      success: function (res) {
-        console.log(res.data);
-        if (res.statusCode == '200') {
-          that.setData({
-             balance: res.data.balance
-          })
-        }
-        else {
-          wx.showToast({
-            title: '查询失败',
-            image: "../../images/icon-no.png",
-            mask: true,
-            duration: 1000
-          })
-        }
-      }
-    })
+    
+    
   },
 
   onHide:function(){
     var that=this;
-    var userId = "张靖9898";
-    // console.log(Requrl);
-    wx.request({
-      url: "http://127.0.0.1:3000/balance",
-      method: "POST",
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: {
-        "wechatname": userId
-      },
-
-      success: function (res) {
-        console.log(res.data);
-        if (res.statusCode == '200') {
-          that.setData({
-            balance: res.data.balance
-          })
-        }
-        else {
-          wx.showToast({
-            title: '查询失败',
-            image: "../../images/icon-no.png",
-            mask: true,
-            duration: 1000
-          })
-        }
-      }
-    })
+    searchBalance(that);
   },
 })

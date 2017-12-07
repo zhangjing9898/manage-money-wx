@@ -10,24 +10,33 @@
   <form bindsubmit="formSave">
     <!--日期-->
    <view class="area-wrp-new">
-    日期：{{listDetail.date}}
+    日期：
+   <input name="inputDate" type="digit" class="input-new" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{listDetail.date}}" />
     </view>
     <!--分类-->
     <view class="area-wrp-new">
-    类别：{{listDetail.style}}
+    类别：
+    <input name="inputStyle" type="digit" class="input-new" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{listDetail.style}}" />
     </view>
     <!--形式-->
     <view class="area-wrp-new">
-    形式：{{listDetail.style}}
+    形式：
+    <input name="inputType" type="digit" class="input-new" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{listDetail.type}}" />
     </view>
     <view class="area-wrp-new">
-    标题：{{listDetail.title}}
+    标题：
+    <input name="inputTitle" type="digit" class="input-new" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{listDetail.title}}" />
     </view>
     <view class="area-wrp-new">
-    金额：{{listDetail.changed}}
+    金额：
+    <input name="inputMoney" type="digit" class="input-new" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{listDetail.changed<0?-listDetail.changed:listDetail.changed}}" />
     </view>
     <view class="area-wrp-new">
-    细节：{{listDetail.detail}}
+    细节：
+    <input name="inputDetail" type="digit" class="input-new" bindinput="bindMoneyInput" placeholder-class="ph"  placeholder="输入金额" value="{{listDetail.detail}}" />
     </view>
+    <view class="hs20"></view>
+     <button class="btn-new-save" hover-class="btn-new-hover" form-type="submit" loading="{{loadingStatus}}">保存</button>
+     <button class="btn-new-delete" hover-class="btn-new-hover" bindtap="delete" loading="{{loadingStatus}}">删除</button>
   </form>
 </view>
